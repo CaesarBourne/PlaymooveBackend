@@ -9,4 +9,4 @@ Route::post('/login', function (Request $request) {
 
 
     return response()->json(['message' => 'User Login successful!', 'data' => $data]);
-})->middleware(Cors::class);
+});
