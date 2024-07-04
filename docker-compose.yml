@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  # Laravel backend service
+  laravel:
+    build:
+      context: ./playmoove-backend
+      dockerfile: Dockerfile
+    container_name: laravel_api_app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: laravel_api_app
+      SERVICE_TAGS: dev
+    ports:
+      - "9000:9000"
+    networks:
+      - app-network
+
+  # Vue frontend service
+  vue:
+    build:
+      context: ./playmoove-frontend
+      dockerfile: Dockerfile
+    container_name: vue_login_app
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
