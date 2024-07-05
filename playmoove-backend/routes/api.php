@@ -1,18 +1,27 @@
 <?php
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
-
-Route::post('/login', function (Request $request) {
-    $data = $request->validate([
-        'username' => 'required|string',
-        'password' => 'required|string'
-    ]);
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 
 
-    return response()->json(['message' => 'User Login successful!', 'data' => $data]);
-});
+
+Route::post('/register', [RegisterController::class, 'register']);
+Route::post('/login', [LoginController::class, 'login']);
+
+
+// // Public routes
+// Route::post('/register', [AuthController::class, 'register']);
+// Route::post('/login', [AuthController::class, 'login']);
+
+
+// Route::middleware('auth:sanctum')->group(function () {
+//     // Route::get('/user', [UserController::class, 'user']);
+//     // Route::post('/logout', [AuthController::class, 'logout']);
+//     // Route::post('/register', [RegisterController::class, 'register']);
+//     // Route::post('/logout', [AuthController::class, 'logout']);
+// });
+
+
