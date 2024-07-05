@@ -1,4 +1,4 @@
-# playmoove-frontend
+# playmoove-vue
 
 ## Project setup
 ```
