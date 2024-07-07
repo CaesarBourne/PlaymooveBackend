@@ -13,7 +13,7 @@ services:
       SERVICE_NAME: laravel_api_app
       SERVICE_TAGS: dev
     ports:
-      - "8000:9000"
+      - "8000:8000"
     networks:
       - app-network
 
